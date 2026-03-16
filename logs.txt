@@ -1,0 +1,16 @@
+{"xuo": "kwws://sdbsdo-orjlq-vhfxuh.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 0.65, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://sdbsdo-orjlq-vhfxuh.frp", "suhglfwlrq": "SKLVKLQJ", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Phglxp Ulvn"}
+----------------------------------------
+{"xuo": "kwws://jrrjoh.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://whvwsks.yxoqzhe.frp", "suhglfwlrq": "SKLVKLQJ", "frqilghqfh": 0.51, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://whvwsks.yxoqzhe.frp", "suhglfwlrq": "SKLVKLQJ", "frqilghqfh": 0.51, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://whvwsks.yxoqzhe.frp", "suhglfwlrq": "SKLVKLQJ", "frqilghqfh": 0.51, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://whv123.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn"}
+----------------------------------------
+{"xuo": "kwws://jrrjoh.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Orz"}
+----------------------------------------
