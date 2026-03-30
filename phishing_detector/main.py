@@ -30,9 +30,9 @@ def main():
 
     # 2. Machine Learning Prediction
     # Assuming generative step was already done.
-    model = PhishingModel("dataset.csv")
+    model = PhishingModel("Dataset1.csv")
     if not model.train():
-        Logger.error("Failed to train ML model. Please run generate_dataset.py first.")
+        Logger.error("Failed to train ML model.")
         sys.exit(1)
     
     Logger.ml("Evaluating URL...")

@@ -77,7 +77,7 @@ python3 -m phishing_detector.main "http://testphp.vulnweb.com"
 ```text
 [INFO] Starting Phishing Detection System
 [INFO] Extracting URL features...
-[ML] Loading dataset from dataset.csv...
+[ML] Loading dataset from Dataset1.csv...
 [ML] Evaluating URL...
 [SECURITY] Checking SSL certificate...
 [SECURITY] Performing URL reputation check & DNS lookups...
@@ -119,7 +119,7 @@ Digital Signature: Verified
 
 ```text
 .
-├── dataset.csv                      # Model training dataset
+├── Dataset1.csv                     # Model training dataset
 ├── logs.txt                         # Caesar-cipher encrypted historical logs
 ├── phishing_detector/
 │   ├── main.py                      # CLI Application Orchestrator
@@ -135,3 +135,7 @@ Digital Signature: Verified
 
 ---
 *Developed for educational purposes in cybersecurity threat hunting and operational cryptography.*
+
+**Dataset Attribution:**
+The machine learning model utilizes the `Dataset1.csv` provided by the **Phishing Website Dataset (Mendeley Data)**.
+🔗 **Link:** [https://data.mendeley.com/datasets/6tm2d6sz7p/1](https://data.mendeley.com/datasets/6tm2d6sz7p/1)

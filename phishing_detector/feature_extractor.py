@@ -1,65 +1,68 @@
 import re
+import math
 from urllib.parse import urlparse
 
 def extract_features(url):
     """
-    Extracts 8 educational features from a URL for phishing detection.
+    Extracts 12 advanced features from a URL matching Dataset1.csv columns.
     Returns: A list of numerical features.
-    Features:
-    0: URL length
-    1: Number of dots in domain
-    2: Number of subdomains (approx)
-    3: Presence of @ symbol
-    4: Presence of - symbol
-    5: Presence of IP address in domain
-    6: HTTPS usage (1 for yes, 0 for no)
-    7: Number of suspicious keywords
     """
+    if not url.startswith(('http://', 'https://')):
+        url_with_scheme = 'http://' + url
+    else:
+        url_with_scheme = url
+
+    parsed = urlparse(url_with_scheme)
+    domain = parsed.netloc
+    
+    def calculate_entropy(s):
+        if not s:
+            return 0
+        p, lns = [s.count(c)/len(s) for c in set(s)], len(s)
+        return -sum(c*math.log2(c) for c in p)
 
     features = []
 
-    # 1. URL length
+    # 1. url_length
     features.append(len(url))
 
-    # Parse URL
-    if not url.startswith("http"):
-        parsed_url = urlparse("http://" + url)
+    # 2. entropy_of_domain
+    features.append(calculate_entropy(domain))
+
+    # 3. average_subdomain_length
+    subdomains = domain.split('.')
+    if len(subdomains) > 0:
+        avg_sub = sum(len(sub) for sub in subdomains) / len(subdomains)
     else:
-        parsed_url = urlparse(url)
+        avg_sub = 0
+    features.append(avg_sub)
 
-    domain = parsed_url.netloc
+    # 4. domain_length
+    features.append(len(domain))
 
-    # 2. Number of dots in domain
-    num_dots = domain.count('.')
-    features.append(num_dots)
+    # 5. entropy_of_url
+    features.append(calculate_entropy(url))
 
-    # 3. Number of subdomains (approximated based on dots)
-    subdomains = max(0, num_dots - 1)
-    features.append(subdomains)
+    # 6. number_of_subdomains
+    features.append(max(0, len(subdomains) - 1))
 
-    # 4. Presence of @ symbol in URL (often used for obfuscation)
-    has_at = 1 if '@' in url else 0
-    features.append(has_at)
+    # 7. number_of_digits_in_domain
+    features.append(sum(c.isdigit() for c in domain))
 
-    # 5. Presence of - symbol in domain (often used in phishing domains)
-    has_hyphen = 1 if '-' in domain else 0
-    features.append(has_hyphen)
+    # 8. number_of_dots_in_url
+    features.append(url.count('.'))
 
-    # 6. Presence of IP address in domain
-    ip_pattern = re.compile(
-        r"^([0-9]{1,3}\.){3}[0-9]{1,3}$"
-    )
-    has_ip = 1 if ip_pattern.match(domain) else 0
-    features.append(has_ip)
+    # 9. number_of_digits_in_url
+    features.append(sum(c.isdigit() for c in url))
 
-    # 7. HTTPS usage
-    is_https = 1 if parsed_url.scheme == 'https' else 0
-    features.append(is_https)
+    # 10. number_of_slash_in_url
+    features.append(url.count('/'))
 
-    # 8. Suspicious keywords
-    keywords = ['login', 'secure', 'verify', 'account', 'update', 'banking', 'confirm', 'password']
-    keyword_count = sum(1 for keyword in keywords if keyword in url.lower())
-    features.append(keyword_count)
+    # 11. number_of_special_char_in_url
+    features.append(sum(not c.isalnum() for c in url))
+
+    # 12. path_length
+    features.append(len(parsed.path))
 
     return features
 

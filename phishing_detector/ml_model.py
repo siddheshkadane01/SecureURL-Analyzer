@@ -6,7 +6,7 @@ from .dataset_loader import load_dataset
 from .logger import Logger
 
 class PhishingModel:
-    def __init__(self, dataset_path="dataset.csv"):
+    def __init__(self, dataset_path="Dataset1.csv"):
         self.dataset_path = dataset_path
         self.model = RandomForestClassifier(n_estimators=100, random_state=42)
         self.feature_names = None

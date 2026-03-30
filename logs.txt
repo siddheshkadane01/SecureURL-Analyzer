@@ -14,3 +14,11 @@
 ----------------------------------------
 {"xuo": "kwws://jrrjoh.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Orz"}
 ----------------------------------------
+{"xuo": "kwws://whvwsks.yxoqzhe.frp", "suhglfwlrq": "SKLVKLQJ", "frqilghqfh": 0.51, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Xqnqrzq"}
+----------------------------------------
+{"xuo": "kwws://dpdcrq.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Xqnqrzq"}
+----------------------------------------
+{"xuo": "kwws://dpdcrp.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 1.0, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Xqnqrzq"}
+----------------------------------------
+{"xuo": "kwws://jrrjoh.frp", "suhglfwlrq": "OHJLWLPDWH", "frqilghqfh": 0.93, "vvo_vwdwxv": "Qrw Vhfxuh", "uhsxwdwlrq": "Orz Ulvn", "kwpo_ulvn": "Orz"}
+----------------------------------------
