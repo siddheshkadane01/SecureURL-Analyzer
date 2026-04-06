@@ -3,6 +3,34 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from .logger import Logger
 
+
+def detect_bot_challenge(response, html_text):
+    """
+    Detects common anti-bot challenge pages (for example Cloudflare checks)
+    so we don't treat challenge HTML as a real site DOM.
+    """
+    server_header = response.headers.get('Server', '').lower()
+    html_lower = html_text.lower()
+
+    cloudflare_markers = [
+        'cf-browser-verification',
+        'verify you are human',
+        'performing security verification',
+        'attention required',
+        '/cdn-cgi/challenge-platform/',
+        'cloudflare',
+        'cf-ray',
+    ]
+
+    if 'cloudflare' in server_header:
+        return "Cloudflare"
+
+    for marker in cloudflare_markers:
+        if marker in html_lower:
+            return "Cloudflare"
+
+    return None
+
 def analyze_html(url):
     """
     Safely fetches and analyzes the HTML/DOM of a provided URL for common
@@ -25,6 +53,16 @@ def analyze_html(url):
         # Only read up to a certain amount of data (e.g., 1MB)
         raw_html = response.iter_content(chunk_size=1024 * 1024)
         html_content = next(raw_html)
+        html_text = html_content.decode('utf-8', errors='ignore')
+
+        challenge_provider = detect_bot_challenge(response, html_text)
+        if challenge_provider:
+            Logger.warning("Bot verification challenge detected. Skipping DOM heuristics.")
+            return {
+                "status": "Bot Verification Challenge",
+                "provider": challenge_provider,
+                "risk_level": "Unknown"
+            }
         
         soup = BeautifulSoup(html_content, 'html.parser')
         

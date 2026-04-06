@@ -1,5 +1,6 @@
 import ssl
 import socket
+import certifi
 from datetime import datetime
 from urllib.parse import urlparse
 from .logger import Logger
@@ -17,7 +18,7 @@ def check_ssl(url):
     if not hostname:
         return {"status": "Invalid URL"}
 
-    context = ssl.create_default_context()
+    context = ssl.create_default_context(cafile=certifi.where())
     context.check_hostname = False
     context.verify_mode = ssl.CERT_NONE
 
@@ -75,7 +76,7 @@ def print_ssl_info(url):
     hostname = parsed_url.hostname
     
     try:
-        context = ssl.create_default_context()
+        context = ssl.create_default_context(cafile=certifi.where())
         with socket.create_connection((hostname, 443), timeout=5) as sock:
             with context.wrap_socket(sock, server_hostname=hostname) as ssock:
                 cert = ssock.getpeercert()

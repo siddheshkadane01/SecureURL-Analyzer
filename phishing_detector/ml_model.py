@@ -2,6 +2,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import numpy as np
+import os
+import pickle
 from .dataset_loader import load_dataset
 from .logger import Logger
 
@@ -13,6 +15,16 @@ class PhishingModel:
         self.is_trained = False
 
     def train(self):
+        model_file = "rf_model.pkl"
+        if os.path.exists(model_file):
+            Logger.ml(f"Loading pre-trained model from {model_file}...")
+            with open(model_file, "rb") as f:
+                saved_data = pickle.load(f)
+                self.model = saved_data["model"]
+                self.feature_names = saved_data["feature_names"]
+            self.is_trained = True
+            return True
+
         Logger.ml(f"Loading dataset from {self.dataset_path}...")
         try:
             X, y = load_dataset(self.dataset_path)
@@ -33,6 +45,11 @@ class PhishingModel:
         accuracy = accuracy_score(y_test, y_pred) * 100
         Logger.ml(f"Model accuracy: {accuracy:.2f}%")
         
+        # Save model to file
+        Logger.ml(f"Saving trained model to {model_file}...")
+        with open(model_file, "wb") as f:
+            pickle.dump({"model": self.model, "feature_names": self.feature_names}, f)
+
         self.is_trained = True
         return True
 
